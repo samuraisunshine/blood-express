@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book — English</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    main {
+      padding: 60px 20px 100px;
+    }
+
+    .book-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border-radius: 10px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      /* Если хочешь, чтобы заголовок и текст были колонкой по центру, можно добавить flex, но не обязательно */
+      /* display: flex;
+         flex-direction: column;
+         align-items: center; */
+    }
+
+    .book-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+
+    /* Выравниваем только текст книги по левому краю */
+    #book-text {
+      text-align: left;
+      width: 100%;
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 600px) {
+      .book-container {
+        padding: 1rem;
+        margin: 3vh 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Статичный фон -->
+  <div class="background"></div>
+
+  <!-- Контент -->
+  <main>
+    <div class="book-container">
+      <div class="book-title">BLOOD EXPRESS</div>
+      <div id="book-text">Loading book text...</div>
+    </div>
+  </main>
+
+  <!-- Скрипт загрузки текста -->
+  <script>
+    fetch('book-es2.txt')
+      .then(response => {
+        if (!response.ok) throw new Error('File not found');
+        return response.text();
+      })
+      .then(text => {
+        document.getElementById('book-text').innerText = text;
+      })
+      .catch(error => {
+        document.getElementById('book-text').innerText = 'Could not load book text.';
+        console.error(error);
+      });
+  </script>
+</body>
+</html>
