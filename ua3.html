@@ -57,13 +57,12 @@
     <div class="book-container">
       <div class="book-title">BLOOD EXPRESS</div>
       <div id="book-text">Loading book text...</div>
-      <a href="ru3.html" class="next-chapter">Следующая глава →</a>
     </div>
   </main>
 
   <!-- Скрипт загрузки текста -->
   <script>
-    fetch('book-ru2.txt')
+    fetch('book-ua3.txt')
       .then(response => {
         if (!response.ok) throw new Error('File not found');
         return response.text();
